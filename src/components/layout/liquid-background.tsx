@@ -50,8 +50,10 @@ const LiquidBackground = () => {
         const isWebGL2 = !!gl;
         if (!isWebGL2) gl = canvas.getContext('webgl', params) as WebGLRenderingContext || canvas.getContext('experimental-webgl', params) as WebGLRenderingContext;
     
-        let halfFloat: OES_texture_half_float | null;
-        let supportLinearFiltering: OES_texture_half_float_linear | null;
+        if (!gl) return { gl: null, ext: null, isWebGL2: false };
+
+        let halfFloat: OES_texture_half_float | null = null;
+        let supportLinearFiltering: OES_texture_half_float_linear | null = null;
         if (isWebGL2) {
             gl.getExtension('EXT_color_buffer_float');
             supportLinearFiltering = gl.getExtension('OES_texture_float_linear');
@@ -120,12 +122,14 @@ const LiquidBackground = () => {
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
     
         const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+        if (fbo) gl.deleteFramebuffer(fbo);
+        if (texture) gl.deleteTexture(texture);
         return status == gl.FRAMEBUFFER_COMPLETE;
     }
 
     class GLProgram {
       program: WebGLProgram;
-      uniforms: { [key: string]: WebGLUniformLocation } = {};
+      uniforms: { [key: string]: WebGLUniformLocation | null } = {};
 
       constructor(
         public readonly gl: WebGLRenderingContext | WebGL2RenderingContext,
@@ -133,12 +137,18 @@ const LiquidBackground = () => {
         fragmentShader: string
       ) {
         this.program = gl.createProgram()!;
-        gl.attachShader(this.program, compileShader(gl.VERTEX_SHADER, vertexShader));
-        gl.attachShader(this.program, compileShader(gl.FRAGMENT_SHADER, fragmentShader));
+
+        const vs = compileShader(gl.VERTEX_SHADER, vertexShader);
+        const fs = compileShader(gl.FRAGMENT_SHADER, fragmentShader);
+
+        if (!vs || !fs) return;
+
+        gl.attachShader(this.program, vs);
+        gl.attachShader(this.program, fs);
         gl.linkProgram(this.program);
 
         if (!gl.getProgramParameter(this.program, gl.LINK_STATUS)) {
-          throw gl.getProgramInfoLog(this.program);
+          console.error(gl.getProgramInfoLog(this.program));
         }
 
         const uniformCount = gl.getProgramParameter(
@@ -154,7 +164,7 @@ const LiquidBackground = () => {
             this.uniforms[uniform.name] = gl.getUniformLocation(
               this.program,
               uniform.name
-            )!;
+            );
           }
         }
       }
@@ -165,12 +175,18 @@ const LiquidBackground = () => {
     }
     
     function compileShader(type: number, source: string) {
-      const shader = gl.createShader(type)!;
+      const shader = gl.createShader(type);
+      if (!shader) {
+        console.error("Failed to create shader");
+        return null;
+      }
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
 
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        throw gl.getShaderInfoLog(shader);
+        console.error(gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
       }
 
       return shader;
@@ -205,7 +221,7 @@ const LiquidBackground = () => {
       void main () {
         vec3 C = texture2D(u_texture, v_texcoord).rgb;
         float a = max(C.r, max(C.g, C.b));
-        gl_FragColor = vec4(C, a);
+        gl_FragColor = vec4(C, 1.0);
       }
     `;
 
@@ -223,7 +239,7 @@ const LiquidBackground = () => {
           p.x *= u_aspectRatio;
           float d = min(1.0, length(p) / u_radius);
           d = pow(d, 2.0);
-          vec3 splat = u_color * (1.0 - d);
+          vec3 splat = u_color * exp(-d * 50.0);
           vec3 base = texture2D(u_target, v_texcoord).xyz;
           gl_FragColor = vec4(base + splat, 1.0);
       }
@@ -332,9 +348,11 @@ const LiquidBackground = () => {
     let dye: any, velocity: any, divergence: any, curl: any, pressure: any;
 
     const blit = (() => {
-        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+        const quadBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer());
+        const indexBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), gl.STATIC_DRAW);
         gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(0);
@@ -353,9 +371,10 @@ const LiquidBackground = () => {
       const rgba = ext.formatRGBA;
       const rg = ext.formatRG;
       const r = ext.formatR;
+      const filtering = support_linear_float ? gl.LINEAR: gl.NEAREST;
 
-      dye = createDoubleFBO(textureWidth, textureHeight, rgba.internalFormat, rgba.format, texType, support_linear_float ? gl.LINEAR: gl.NEAREST);
-      velocity = createDoubleFBO(textureWidth, textureHeight, rg.internalFormat, rg.format, texType, support_linear_float ? gl.LINEAR: gl.NEAREST);
+      dye = createDoubleFBO(textureWidth, textureHeight, rgba.internalFormat, rgba.format, texType, filtering);
+      velocity = createDoubleFBO(textureWidth, textureHeight, rg.internalFormat, rg.format, texType, filtering);
       divergence = createFBO(textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
       curl = createFBO(textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
       pressure = createDoubleFBO(textureWidth, textureHeight, r.internalFormat, r.format, texType, gl.NEAREST);
@@ -522,7 +541,7 @@ const LiquidBackground = () => {
       gl.uniform1f(splatProgram.uniforms.u_aspectRatio, canvas.width / canvas.height);
       gl.uniform2f(splatProgram.uniforms.u_point, x / canvas.width, 1.0 - y / canvas.height);
       gl.uniform3f(splatProgram.uniforms.u_color, dx, -dy, 1.0);
-      gl.uniform1f(splatProgram.uniforms.u_radius, config.SPLAT_RADIUS / 100.0);
+      gl.uniform1f(splatProgram.uniforms.u_radius, config.SPLAT_RADIUS);
       blit(velocity.write.fbo);
       velocity.swap();
 
@@ -534,7 +553,7 @@ const LiquidBackground = () => {
     
     function multipleSplats(amount: number) {
       for (let i = 0; i < amount; i++) {
-          const color = [Math.random() * 10, Math.random() * 10, Math.random() * 10];
+          const color = [Math.random() * 0.5 + 0.2, Math.random() * 0.5 + 0.2, Math.random() * 0.5 + 0.2];
           const x = canvas.width * Math.random();
           const y = canvas.height * Math.random();
           const dx = 1000 * (Math.random() - 0.5);
@@ -588,7 +607,6 @@ const LiquidBackground = () => {
         pointer.y = posY;
         pointer.dx = 0;
         pointer.dy = 0;
-        splat(posX, posY, 0, 0, pointer.color);
     };
 
     const onMouseUp = () => {
@@ -610,7 +628,6 @@ const LiquidBackground = () => {
           pointer.color = [Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2];
           pointer.x = posX;
           pointer.y = posY;
-          splat(posX, posY, 0, 0, pointer.color);
       }
     };
     
@@ -654,11 +671,12 @@ const LiquidBackground = () => {
     canvas.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
 
-    canvas.addEventListener('touchstart', onTouchStart);
-    canvas.addEventListener('touchmove', onTouchMove);
-    canvas.addEventListener('touchend', onTouchEnd);
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('touchend', onTouchEnd);
 
-
+    
+    resizeCanvas();
     initFBOs();
     multipleSplats(parseInt((Math.random() * 20).toString()) + 5);
     update();
@@ -669,7 +687,7 @@ const LiquidBackground = () => {
       window.removeEventListener('mouseup', onMouseUp);
       canvas.removeEventListener('touchstart', onTouchStart);
       canvas.removeEventListener('touchmove', onTouchMove);
-      canvas.removeEventListener('touchend', onTouchEnd);
+      window.removeEventListener('touchend', onTouchEnd);
 
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
@@ -681,3 +699,5 @@ const LiquidBackground = () => {
 };
 
 export default LiquidBackground;
+
+    
