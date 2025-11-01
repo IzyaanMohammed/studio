@@ -51,6 +51,11 @@ const LiquidBackground = () => {
       color: number[];
     }[] = [];
 
+    const textureWidth =
+      (gl.drawingBufferWidth || 0) >> config.TEXTURE_DOWNSAMPLE;
+    const textureHeight =
+      (gl.drawingBufferHeight || 0) >> config.TEXTURE_DOWNSAMPLE;
+
     class GLProgram {
       program: WebGLProgram | null = null;
       uniforms: { [key: string]: WebGLUniformLocation } = {};
@@ -93,6 +98,25 @@ const LiquidBackground = () => {
       bind() {
         this.gl.useProgram(this.program);
       }
+    }
+    
+    function compileShader(type: number, source: string) {
+      source = source.replace(
+        /_Resolution/g,
+        'vec2(' + textureWidth + ', ' + textureHeight + ')'
+      );
+      const shader = gl.createShader(type);
+      if (!shader) {
+        throw new Error('Failed to create shader');
+      }
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        throw gl.getShaderInfoLog(shader);
+      }
+
+      return shader;
     }
 
     const baseVertexShader = compileShader(
@@ -291,10 +315,6 @@ const LiquidBackground = () => {
       gradientSubtractShader
     );
 
-    const textureWidth =
-      (gl.drawingBufferWidth || 0) >> config.TEXTURE_DOWNSAMPLE;
-    const textureHeight =
-      (gl.drawingBufferHeight || 0) >> config.TEXTURE_DOWNSAMPLE;
     const texelSize = { x: 1.0 / textureWidth, y: 1.0 / textureHeight };
 
     const dye = createDoubleFBO(
@@ -361,13 +381,15 @@ const LiquidBackground = () => {
         antialias: false,
       };
 
-      let gl = (canvas.getContext('webgl2', params) || canvas.getContext('webgl', params)) as (WebGLRenderingContext | WebGL2RenderingContext) | null;
-      
+      let gl = canvas.getContext('webgl2', params);
+      const isWebGL2 = !!gl;
+      if (!isWebGL2) {
+          gl = (canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params)) as WebGLRenderingContext | null;
+      }
+
       if (!gl) {
         return null;
       }
-
-      const isWebGL2 = 'WebGL2RenderingContext' in window && gl instanceof WebGL2RenderingContext;
 
       const extensions: { [key: string]: any } = {};
       let available_extensions: string[] | null = gl.getSupportedExtensions();
@@ -400,25 +422,6 @@ const LiquidBackground = () => {
       }
   
       return { gl, ext: extensions, isWebGL2 };
-    }
-
-    function compileShader(type: number, source: string) {
-      source = source.replace(
-        /_Resolution/g,
-        'vec2(' + textureWidth + ', ' + textureHeight + ')'
-      );
-      const shader = gl.createShader(type);
-      if (!shader) {
-        throw new Error('Failed to create shader');
-      }
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        throw gl.getShaderInfoLog(shader);
-      }
-
-      return shader;
     }
 
     function createFBO(
