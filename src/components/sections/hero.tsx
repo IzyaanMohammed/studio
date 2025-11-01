@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import LiquidBackground from '@/components/layout/liquid-background';
 
 export default function HeroSection() {
   return (
@@ -8,10 +9,8 @@ export default function HeroSection() {
       id="home"
       className="relative flex items-center justify-center h-[calc(100vh-4rem)] min-h-[500px] overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10" />
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute h-full w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,hsl(var(--primary)_/_0.3),hsl(var(--background)_/_0.9))]"></div>
-      </div>
+      <LiquidBackground />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background z-10" />
       <div className="container relative z-20 mx-auto px-4 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl font-headline">
           The <span className="text-glow text-primary">Tesla</span> of
