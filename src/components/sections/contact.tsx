@@ -4,8 +4,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useFormState } from 'react-dom';
-import { useEffect } from 'react';
+import { useActionState, useEffect } from 'react';
 import {
   Form,
   FormControl,
@@ -34,7 +33,7 @@ const initialState: FormState = {
 
 export default function ContactSection() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -46,7 +45,7 @@ export default function ContactSection() {
   });
 
   useEffect(() => {
-    if (state.message) {
+    if (state.message && state.message !== '') {
       if (state.success) {
         toast({
           title: 'Success!',
