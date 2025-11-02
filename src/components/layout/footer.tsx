@@ -1,6 +1,6 @@
-
 import Link from 'next/link';
 import { Sparkles, Github, Twitter, Linkedin, Phone, Mail } from 'lucide-react';
+import { Button } from '../ui/button';
 
 const socialLinks = [
   {
@@ -20,43 +20,77 @@ const socialLinks = [
   },
 ];
 
+const footerLinks = [
+    { href: '#home', label: 'Home' },
+    { href: '#services', label: 'Services' },
+    { href: '#portfolio', label: 'Our Work' },
+    { href: '#about', label: 'About Us' },
+    { href: '#testimonials', label: 'Testimonials' },
+    { href: '#contact', label: 'Contact' },
+]
+
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-8 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold text-foreground">Aether Studio</span>
-          </Link>
-          
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm text-muted-foreground">
-             <a href="mailto:izyaankaka11@gmail.com" className="flex items-center gap-2 transition-colors hover:text-primary">
-                <Mail className="h-4 w-4" />
-                <span>izyaankaka11@gmail.com</span>
-              </a>
-              <a href="tel:+9710526157389" className="flex items-center gap-2 transition-colors hover:text-primary">
-                <Phone className="h-4 w-4" />
-                <span>+971 052 615 7389</span>
-              </a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.name}
-                className="text-muted-foreground transition-colors hover:text-primary"
-              >
-                <link.icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
+    <footer className="bg-secondary/50 border-t border-border">
+      <div className="container mx-auto px-4 py-12 md:px-6">
+        <div className="grid gap-8 md:grid-cols-12">
+            <div className='col-span-12 md:col-span-4 space-y-4'>
+                 <Link href="/" className="flex items-center gap-2">
+                    <Sparkles className="h-6 w-6 text-primary" />
+                    <span className="text-xl font-bold text-foreground">Aether Studio</span>
+                </Link>
+                <p className='text-muted-foreground text-sm'>
+                    We are a creative branding and web design agency that builds impactful digital experiences for brands in the UAE and Saudi Arabia.
+                </p>
+                 <div className="flex items-center gap-4">
+                    {socialLinks.map((link) => (
+                    <a
+                        key={link.name}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.name}
+                        className="text-muted-foreground transition-colors hover:text-primary"
+                    >
+                        <link.icon className="h-5 w-5" />
+                    </a>
+                    ))}
+                </div>
+            </div>
+            <div className='col-span-12 md:col-span-2'>
+                <h3 className='font-semibold mb-4'>Navigation</h3>
+                <ul className='space-y-2'>
+                    {footerLinks.map(link => (
+                        <li key={link.href}>
+                            <Link href={link.href} className='text-sm text-muted-foreground hover:text-primary transition-colors'>
+                                {link.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className='col-span-12 md:col-span-3'>
+                 <h3 className='font-semibold mb-4'>Get in Touch</h3>
+                 <div className="flex flex-col gap-4 text-sm text-muted-foreground">
+                    <a href="mailto:izyaankaka11@gmail.com" className="flex items-center gap-2 transition-colors hover:text-primary">
+                        <Mail className="h-4 w-4" />
+                        <span>izyaankaka11@gmail.com</span>
+                    </a>
+                    <a href="tel:+9710526157389" className="flex items-center gap-2 transition-colors hover:text-primary">
+                        <Phone className="h-4 w-4" />
+                        <span>+971 052 615 7389</span>
+                    </a>
+                </div>
+            </div>
+            <div className='col-span-12 md:col-span-3 space-y-4'>
+                <h3 className='font-semibold'>Ready to start a project?</h3>
+                <p className='text-sm text-muted-foreground'>Let's build something amazing together.</p>
+                <Button asChild>
+                    <Link href="#contact">Let's Talk</Link>
+                </Button>
+            </div>
         </div>
-        <div className="mt-6 text-center text-xs text-muted-foreground">
+        <div className="mt-8 pt-8 border-t border-border text-center text-xs text-muted-foreground">
           <p>
             &copy; {new Date().getFullYear()} Aether Studio. All rights reserved.
           </p>

@@ -14,7 +14,7 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     quote:
-      'Aether Studio transformed our online presence with their incredible creativity and professionalism. They are true innovators in the digital space.',
+      'Aether Studio is a powerhouse of creativity and technical skill. They took our vision and turned it into a digital reality that exceeded all our goals. The best branding agency in Dubai, hands down.',
     name: 'Fatima Al Marzooqi',
     company: 'CEO of Innovate UAE',
     avatar: 'FA',
@@ -22,7 +22,7 @@ const testimonials = [
   },
   {
     quote:
-      'The attention to detail and commitment to our vision was unparalleled. Aether Studio is the Tesla of web design, without a doubt.',
+      'The attention to detail and commitment to our vision was unparalleled. Aether Studio is the Tesla of web design, without a doubt. Our user engagement has skyrocketed since the launch.',
     name: 'Yusuf Ahmed',
     company: 'Founder of Tech Forward',
     avatar: 'YA',
@@ -30,7 +30,7 @@ const testimonials = [
   },
   {
     quote:
-      'Working with Aether Studio was a seamless experience. They delivered a high-performance, visually stunning website that exceeded all our expectations.',
+      'Working with Aether Studio was a seamless experience. They delivered a high-performance, visually stunning website that perfectly captures our brand essence. Highly recommended!',
     name: 'Layla Ibrahim',
     company: 'Marketing Director at Creative Minds',
     avatar: 'LI',
@@ -40,9 +40,10 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-card">
+    <section id="testimonials" className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
+            <p className="text-primary font-semibold">WHAT OUR CLIENTS SAY</p>
           <h2 className="text-3xl md:text-4xl font-bold font-headline">
             Words From Our Clients
           </h2>
@@ -61,7 +62,7 @@ export default function TestimonialsSection() {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2">
                 <div className="p-4 h-full">
-                  <Card className="h-full flex flex-col justify-between bg-background">
+                  <Card className="h-full flex flex-col justify-between bg-secondary/30">
                     <CardContent className="p-6 flex flex-col items-start gap-4">
                       <Quote className="h-8 w-8 text-primary" />
                       <p className="text-muted-foreground italic">
@@ -85,8 +86,8 @@ export default function TestimonialsSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="left-[-50px]"/>
+          <CarouselNext className="right-[-50px]"/>
         </Carousel>
       </div>
     </section>

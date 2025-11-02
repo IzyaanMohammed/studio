@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -12,7 +11,7 @@ const ParticleBackground = () => {
   let mouse = {
     x: 0,
     y: 0,
-    radius: 100, // Reduced radius for more subtle interaction
+    radius: 120, 
   };
 
   class Particle {
@@ -42,7 +41,7 @@ const ParticleBackground = () => {
       this.speedY = speedY;
       this.size = size;
       this.color = color;
-      this.density = (Math.random() * 30) + 1;
+      this.density = (Math.random() * 40) + 5;
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -95,18 +94,17 @@ const ParticleBackground = () => {
 
   const init = (ctx: CanvasRenderingContext2D) => {
     particles = [];
-    const numberOfParticles = (ctx.canvas.height * ctx.canvas.width) / 5000;
+    const numberOfParticles = (ctx.canvas.height * ctx.canvas.width) / 9000;
     const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-
+    
     for (let i = 0; i < numberOfParticles; i++) {
-      let size = Math.random() * 1.5 + 0.5;
+      let size = Math.random() * 2 + 1;
       let x = Math.random() * ctx.canvas.width;
       let y = Math.random() * ctx.canvas.height;
-      let speedX = (Math.random() - 0.5) * 0.2;
-      let speedY = (Math.random() - 0.5) * 0.2;
+      let speedX = (Math.random() - 0.5) * 0.3;
+      let speedY = (Math.random() - 0.5) * 0.3;
       
-      let color = Math.random() > 0.3 ? `hsl(${primaryColor})` : `hsl(${accentColor})`;
+      let color = `hsl(${primaryColor})`;
 
       particles.push(new Particle(x, y, speedX, speedY, size, color));
     }
@@ -120,11 +118,11 @@ const ParticleBackground = () => {
         let dy = particles[a].y - particles[b].y;
         let distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 80) {
-          opacityValue = 1 - (distance / 80);
-          let lineColor = theme === 'dark' ? 'hsla(0, 0%, 98%, ' + opacityValue + ')' : 'hsla(222.2, 84%, 4.9%, ' + opacityValue + ')';
+        if (distance < 100) {
+          opacityValue = 1 - (distance / 100);
+          let lineColor = `hsla(${getComputedStyle(document.documentElement).getPropertyValue('--primary')}, ${opacityValue * 0.8})`;
           ctx.strokeStyle = lineColor;
-          ctx.lineWidth = 0.5;
+          ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
@@ -155,7 +153,7 @@ const ParticleBackground = () => {
       if (!canvas || !isMounted) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      mouse.radius = 120;
+      mouse.radius = 150;
       if (ctx) {
         init(ctx);
       }
@@ -176,7 +174,14 @@ const ParticleBackground = () => {
     window.addEventListener('mouseout', mouseOutHandler);
 
     resizeHandler();
-    animate(ctx);
+    // A short delay to ensure CSS variables are loaded
+    setTimeout(() => {
+        if(isMounted) {
+            init(ctx);
+            animate(ctx);
+        }
+    }, 100);
+
 
     return () => {
       isMounted = false;
@@ -188,7 +193,7 @@ const ParticleBackground = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full -z-10" />;
 };
 
 export default ParticleBackground;

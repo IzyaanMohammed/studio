@@ -7,25 +7,31 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center h-[calc(100vh-4rem)] min-h-[500px] overflow-hidden"
+      className="relative flex items-center justify-center h-screen min-h-[600px] overflow-hidden"
     >
       <ParticleBackground />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/80 to-background z-10" />
       <div className="container relative z-20 mx-auto px-4 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl font-headline">
-          The <span className="text-glow text-primary">Tesla</span> of
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl font-headline">
+          AWARD-WINNING
           <br />
-          Web Design
+          <span className="text-glow text-primary">BRANDING & WEB DESIGN</span>
+          <br />
+          FOR THE UAE & SAUDI ARABIA
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
-          We build futuristic, innovative, and high-performance websites that
-          drive results for creative businesses in the UAE and beyond.
+          We are a creative agency that builds brilliant brands, websites and apps for businesses in the Middle East.
         </p>
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="#contact">
-            <Button size="lg" className="group accent-glow transition-all duration-300 hover:accent-glow/70">
-              Start a Project
+            <Button size="lg" className="group accent-glow transition-all duration-300 hover:accent-glow/70 w-full sm:w-auto">
+              Let's Talk
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+           <Link href="#portfolio">
+            <Button size="lg" variant="outline" className="group w-full sm:w-auto">
+              Our Work
             </Button>
           </Link>
         </div>

@@ -1,20 +1,20 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: 'Aether Studio | Creative Web Design Agency UAE',
+  title: 'Aether Studio | Award-Winning Branding & Web Design Agency UAE',
   description:
-    'Aether Studio is a premier creative web design agency in the UAE, specializing in building futuristic, innovative, and high-performance websites.',
+    'Aether Studio is a premier creative web design and branding agency in the UAE, specializing in building futuristic, innovative, and high-performance websites and brand identities.',
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased',
-          poppins.variable
+          inter.variable
         )}
       >
         <ThemeProvider
