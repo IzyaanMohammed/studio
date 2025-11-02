@@ -4,23 +4,23 @@ import { Search, PenTool, Code, Rocket } from 'lucide-react';
 const processSteps = [
   {
     icon: Search,
-    title: 'Discover',
-    description: 'We dive deep into your brand, goals, and audience to build a solid foundation.'
+    title: '1. Discovery & Strategy',
+    description: 'We begin by immersing ourselves in your brand, defining key objectives, and mapping out a strategic path to success.'
   },
   {
     icon: PenTool,
-    title: 'Design',
-    description: 'Crafting intuitive and visually stunning interfaces that tell your story.'
+    title: '2. UX & UI Design',
+    description: 'Next, we design a seamless user experience and a stunning visual interface that captivates your audience and tells your unique story.'
   },
   {
     icon: Code,
-    title: 'Develop',
-    description: 'Bringing designs to life with clean, efficient, and scalable code.'
+    title: '3. Precision Development',
+    description: 'Our developers bring the designs to life using clean, scalable, and high-performance code for a flawless digital product.'
   },
   {
     icon: Rocket,
-    title: 'Deploy',
-    description: 'Launching your project into the digital universe for the world to see.'
+    title: '4. Launch & Optimization',
+    description: 'We deploy your project to the world, then monitor and optimize for peak performance, ensuring long-term growth and impact.'
   }
 ];
 
@@ -31,10 +31,10 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">
-              Crafting Digital Futures
+              Engineering Digital Excellence
             </h2>
             <p className="text-muted-foreground text-lg">
-              Our mission is to merge creativity with technology to build extraordinary digital experiences. We believe in a collaborative process, working closely with our clients to transform their vision into a reality that not only looks good but performs exceptionally.
+              At Aether Studio, our mission is to fuse cutting-edge design with robust technology to build extraordinary digital experiences. We believe in a collaborative, transparent process, working as your strategic partner to turn ambitious visions into high-performance digital products that not only look remarkable but deliver tangible results.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -44,7 +44,7 @@ export default function AboutSection() {
                   <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
                     <step.icon className="h-6 w-6" />
                   </div>
-                  <CardTitle className="mt-4">{step.title}</CardTitle>
+                  <CardTitle className="mt-4 text-base md:text-lg">{step.title}</CardTitle>
                   <CardDescription className="mt-1 text-sm">{step.description}</CardDescription>
                 </CardHeader>
               </Card>
