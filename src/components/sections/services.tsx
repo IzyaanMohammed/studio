@@ -9,27 +9,27 @@ const services = [
   {
     icon: Layers,
     title: 'Brand Architecture',
-    description: 'We will build a powerful brand foundation, crafting an identity that resonates with your audience and stands the test of time.'
+    description: 'We can build a powerful brand foundation, crafting an identity that resonates with your audience and stands the test of time.'
   },
   {
     icon: MonitorSmartphone,
     title: 'Digital Ecosystems',
-    description: 'We will design and develop beautiful, high-performance websites and applications engineered for an unforgettable user experience.'
+    description: 'We design and develop beautiful, high-performance websites and applications engineered for an unforgettable user experience.'
   },
   {
     icon: MousePointerClick,
     title: 'Interactive Experiences',
-    description: 'We can build immersive digital experiences that captivate users, foster engagement, and bring your brand’s story to life.'
+    description: 'We build immersive digital experiences that captivate users, foster engagement, and bring your brand’s story to life.'
   },
   {
     icon: ShoppingBag,
     title: 'E-commerce Solutions',
-    description: 'We will create high-converting e-commerce platforms that seamlessly integrate your brand and drive sales through superior UX.'
+    description: 'We create high-converting e-commerce platforms that seamlessly integrate your brand and drive sales through superior UX.'
   },
   {
       icon: Palette,
       title: 'Scalable Design Systems',
-      description: 'We will craft a comprehensive design system that ensures brand consistency, streamlines development, and scales with your business.'
+      description: 'We can craft a comprehensive design system that ensures brand consistency, streamlines development, and scales with your business.'
   },
   {
       icon: TrendingUp,
