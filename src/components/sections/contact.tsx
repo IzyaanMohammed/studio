@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -19,6 +18,7 @@ import { submitContactForm, type FormState } from '@/app/actions';
 import { SubmitButton } from '@/components/submit-button';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowRight } from 'lucide-react';
+import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -65,69 +65,73 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">
-            Let's Build Together
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            Have a project in mind? We'd love to hear about it.
-          </p>
-        </div>
-        <div className="max-w-2xl mx-auto">
-          <Form {...form}>
-            <form action={formAction} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} />
-                    </FormControl>
-                    <FormMessage>{state.errors?.name}</FormMessage>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="your.email@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage>{state.errors?.email}</FormMessage>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Tell us about your project..."
-                        className="min-h-[150px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage>{state.errors?.message}</FormMessage>
-                  </FormItem>
-                )}
-              />
-              <div className="text-right">
-                <SubmitButton size="lg" className="group accent-glow transition-all duration-300 hover:accent-glow/70">
-                  Send Message
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </SubmitButton>
-              </div>
-            </form>
-          </Form>
-        </div>
+        <UseScrollObserver>
+          <div className="text-center mb-12 fade-in-up">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              Let's Build Together
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              Have a project in mind? We'd love to hear about it.
+            </p>
+          </div>
+        </UseScrollObserver>
+        <UseScrollObserver>
+          <div className="max-w-2xl mx-auto fade-in-up">
+            <Form {...form}>
+              <form action={formAction} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                      <FormMessage>{state.errors?.name}</FormMessage>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage>{state.errors?.email}</FormMessage>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell us about your project..."
+                          className="min-h-[150px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage>{state.errors?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
+                <div className="text-right">
+                  <SubmitButton size="lg" className="group accent-glow transition-all duration-300 hover:accent-glow/70">
+                    Send Message
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </SubmitButton>
+                </div>
+              </form>
+            </Form>
+          </div>
+        </UseScrollObserver>
       </div>
     </section>
   );

@@ -10,11 +10,12 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Quote } from 'lucide-react';
+import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 
 const testimonials = [
   {
     quote:
-      'Aether Studio is a powerhouse of creativity and technical skill. They took our vision and turned it into a digital reality that exceeded all our goals. The best branding agency in Dubai, hands down.',
+      'WebCraft is a powerhouse of creativity and technical skill. They took our vision and turned it into a digital reality that exceeded all our goals. The best branding agency in Dubai, hands down.',
     name: 'Fatima Al Marzooqi',
     company: 'CEO of Innovate UAE',
     avatar: 'FA',
@@ -22,7 +23,7 @@ const testimonials = [
   },
   {
     quote:
-      'The attention to detail and commitment to our vision was unparalleled. Aether Studio is the Tesla of web design, without a doubt. Our user engagement has skyrocketed since the launch.',
+      'The attention to detail and commitment to our vision was unparalleled. WebCraft is the Tesla of web design, without a doubt. Our user engagement has skyrocketed since the launch.',
     name: 'Yusuf Ahmed',
     company: 'Founder of Tech Forward',
     avatar: 'YA',
@@ -30,7 +31,7 @@ const testimonials = [
   },
   {
     quote:
-      'Working with Aether Studio was a seamless experience. They delivered a high-performance, visually stunning website that perfectly captures our brand essence. Highly recommended!',
+      'Working with WebCraft was a seamless experience. They delivered a high-performance, visually stunning website that perfectly captures our brand essence. Highly recommended!',
     name: 'Layla Ibrahim',
     company: 'Marketing Director at Creative Minds',
     avatar: 'LI',
@@ -42,21 +43,24 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-20 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-            <p className="text-primary font-semibold">WHAT OUR CLIENTS SAY</p>
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">
-            Words From Our Clients
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            See what our partners have to say about their experience with us.
-          </p>
-        </div>
+        <UseScrollObserver>
+          <div className="text-center mb-12 fade-in-up">
+              <p className="text-primary font-semibold">WHAT OUR CLIENTS SAY</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">
+              Words From Our Clients
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              See what our partners have to say about their experience with us.
+            </p>
+          </div>
+        </UseScrollObserver>
+        <UseScrollObserver>
         <Carousel
           opts={{
             align: 'start',
             loop: true,
           }}
-          className="w-full max-w-4xl mx-auto"
+          className="w-full max-w-4xl mx-auto fade-in-up"
         >
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
@@ -89,6 +93,7 @@ export default function TestimonialsSection() {
           <CarouselPrevious className="left-[-50px]"/>
           <CarouselNext className="right-[-50px]"/>
         </Carousel>
+        </UseScrollObserver>
       </div>
     </section>
   );

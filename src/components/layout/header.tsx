@@ -36,14 +36,14 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border"
+          ? "border-b border-border/50 bg-background/80 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <Sparkles className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground">Aether Studio</span>
+          <span className="text-xl font-bold text-foreground">WebCraft</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -74,7 +74,7 @@ export default function Header() {
                   <div className="flex items-center justify-between p-4 border-b">
                      <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
                       <Sparkles className="h-6 w-6 text-primary" />
-                      <span className="text-xl font-bold">Aether Studio</span>
+                      <span className="text-xl font-bold">WebCraft</span>
                     </Link>
                   </div>
                   <nav className="flex flex-col gap-6 p-4 mt-6">
