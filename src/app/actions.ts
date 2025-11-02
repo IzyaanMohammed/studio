@@ -4,8 +4,6 @@
 import { z } from 'zod';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters long.'),
   email: z.string().email('Please enter a valid email address.'),
@@ -49,6 +47,7 @@ export async function submitContactForm(
   }
 
   const { name, email, message } = validatedFields.data;
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const { data, error } = await resend.emails.send({
