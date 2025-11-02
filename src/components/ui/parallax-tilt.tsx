@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useRef, ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
-const ParallaxTilt = ({ children }: { children: ReactNode }) => {
+interface ParallaxTiltProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const ParallaxTilt = ({ children, className }: ParallaxTiltProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -32,7 +38,7 @@ const ParallaxTilt = ({ children }: { children: ReactNode }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transition: 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
-      className="w-full h-full"
+      className={cn("w-full h-full", className)}
     >
       {children}
     </div>

@@ -31,7 +31,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 bg-background"
         style={{
             background: mousePosition
-                ? `radial-gradient(1000px at ${mousePosition.x}px ${mousePosition.y}px, hsla(var(--primary)/0.25), transparent 80%)`
+                ? `radial-gradient(1200px at ${mousePosition.x}px ${mousePosition.y}px, hsla(var(--primary)/0.25), transparent 80%)`
                 : 'transparent',
         }}
       />
