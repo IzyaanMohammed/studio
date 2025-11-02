@@ -8,45 +8,11 @@ import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
 export default function HeroSection() {
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
   return (
     <section
       id="home"
       className="relative flex items-center justify-center h-screen min-h-[700px] overflow-hidden"
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 bg-background"
-        style={{
-            background: mousePosition
-                ? `radial-gradient(1200px at ${mousePosition.x}px ${mousePosition.y}px, hsla(var(--primary)/0.25), transparent 80%)`
-                : 'transparent',
-        }}
-      />
-      <div
-        className={cn(
-          'absolute inset-0 z-0',
-          'bg-neutral-50 transition-bg dark:bg-transparent',
-          '[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary)/0.1)_0%,hsl(var(--primary)/0.1)_7%,transparent_10%,transparent_12%,hsl(var(--primary)/0.1)_16%)]',
-          'dark:[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary)/0.2)_0%,hsl(var(--primary)/0.2)_7%,transparent_10%,transparent_12%,hsl(var(--primary)/0.2)_16%)]',
-          '[background-image:var(--aurora),var(--aurora)]',
-          '[background-size:300%,300%]',
-          "after:content-[''] after:absolute after:inset-0 after:bg-background/80 after:backdrop-blur-sm dark:after:bg-background/90",
-          'animate-aurora'
-        )}
-      />
       <div className="container relative z-20 mx-auto px-4 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl font-headline">
           PIXEL-PERFECT
