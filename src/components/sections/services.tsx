@@ -1,3 +1,4 @@
+'use client';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Palette, Layers, MonitorSmartphone, ShoppingBag, TrendingUp, MousePointerClick } from 'lucide-react';
 import { UseScrollObserver } from '@/hooks/use-scroll-observer';
@@ -7,33 +8,33 @@ import { ParallaxTilt } from '../ui/parallax-tilt';
 const services = [
   {
     icon: Layers,
-    title: 'Brand Strategy & Identity',
-    description: 'We define your brand’s core message and design a stunning visual identity that tells your story and makes it unforgettable.'
+    title: 'Brand Architecture',
+    description: 'We will build a powerful brand foundation, crafting an identity that resonates with your audience and stands the test of time.'
   },
   {
     icon: MonitorSmartphone,
-    title: 'UI/UX Design',
-    description: 'We create intuitive, beautiful, and high-performance websites and applications that offer a seamless user experience.'
+    title: 'Digital Ecosystems',
+    description: 'We will design and develop beautiful, high-performance websites and applications engineered for an unforgettable user experience.'
   },
   {
     icon: MousePointerClick,
     title: 'Interactive Experiences',
-    description: 'We build engaging interactive websites and applications that captivate users and bring your brand’s digital presence to life.'
+    description: 'We can build immersive digital experiences that captivate users, foster engagement, and bring your brand’s story to life.'
   },
   {
     icon: ShoppingBag,
-    title: 'E-commerce Platforms',
-    description: 'We build high-converting e-commerce platforms that integrate your brand and drive sales through superior UX/UI.'
+    title: 'E-commerce Solutions',
+    description: 'We will create high-converting e-commerce platforms that seamlessly integrate your brand and drive sales through superior UX.'
   },
   {
       icon: Palette,
-      title: 'Design Systems',
-      description: 'We craft comprehensive design systems that ensure brand consistency, streamline development, and scale with your business.'
+      title: 'Scalable Design Systems',
+      description: 'We will craft a comprehensive design system that ensures brand consistency, streamlines development, and scales with your business.'
   },
   {
       icon: TrendingUp,
-      title: 'Growth & Marketing',
-      description: 'We develop a cohesive content and social media strategy to grow your audience and amplify your brand’s reach.'
+      title: 'Audience Growth',
+      description: 'We can develop a cohesive content and social media strategy to expand your audience and amplify your brand’s digital reach.'
   }
 ];
 

@@ -88,11 +88,6 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
                 </Badge>
               ))}
             </div>
-             <Button variant="outline" size="sm" asChild>
-                <Link href={project.href} target="_blank">
-                  View Project <ArrowUpRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
           </CardFooter>
         </Card>
       </ParallaxTilt>
