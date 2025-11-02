@@ -19,34 +19,34 @@ import { ParallaxTilt } from '../ui/parallax-tilt';
 const projects = [
   {
     id: 'nebula-ui',
-    title: 'Nebula - Next-Gen SaaS',
+    title: 'The Daily Grind - Local Cafe',
     description:
-      'We delivered a comprehensive brand identity and scalable design system for Nebula, a B2B SaaS platform. The new UX/UI led to a 40% increase in user engagement and a 25% faster task completion rate.',
-    tags: ['Brand Identity', 'UI/UX Design', 'SaaS'],
+      'We brewed up a fresh website and online ordering system, boosting their takeaway sales by 40% and creating a vibrant online hub for their local community.',
+    tags: ['Web Design', 'E-commerce', 'Local Business'],
     href: "/#",
   },
   {
     id: 'ecliptica-brand',
-    title: 'Ecliptica - Luxury Fashion E-commerce',
+    title: 'Artisan Crafted Co. - Boutique E-commerce',
     description:
-      'Crafted a sophisticated brand and e-commerce website for Ecliptica, resulting in a 300% increase in online sales and significant media attention in major fashion publications.',
-    tags: ['Branding', 'E-commerce', 'Web Design'],
+      'Crafted a beautiful brand identity and Shopify store that captured the essence of their handmade products, leading to a 300% increase in online sales within the first quarter.',
+    tags: ['Branding', 'E-commerce', 'Shopify'],
     href: "/#",
   },
   {
     id: 'flowspace-website',
-    title: 'FlowSpace - FinTech Corporate Site',
+    title: 'Evergreen Services - Service Provider',
     description:
-      'Designed a corporate website focused on building trust and authority in the FinTech space. The site features clear data visualizations and a secure, seamless user journey, boosting investor confidence.',
-    tags: ['Web Development', 'FinTech', 'Data Visualization'],
+      "Developed a clean, professional website focused on lead generation. The new site structure and clear calls-to-action resulted in a 60% increase in qualified customer inquiries.",
+    tags: ['Web Development', 'Lead Generation', 'Small Business'],
     href: "/#",
   },
   {
     id: 'quantum-analytics',
-    title: 'Quantum - AI Analytics Platform',
+    title: 'Innovatech - B2B Tech Startup',
     description:
-      'Developed a cutting-edge web application for Quantum, an AI-powered analytics firm. The platform visualizes complex data streams in an intuitive dashboard, enabling users to derive insights 80% faster.',
-    tags: ['Web App', 'AI', 'Data Science'],
+      'Designed a sleek, modern landing page and brand identity to help them secure their first round of funding and attract early-adopter clients in the competitive tech space.',
+    tags: ['Branding', 'Web Design', 'UI/UX'],
     href: "/#",
   }
 ];
