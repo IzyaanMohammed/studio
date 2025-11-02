@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function HeroSection() {
   return (
@@ -8,6 +9,13 @@ export default function HeroSection() {
       id="home"
       className="relative flex items-center justify-center h-screen min-h-[700px] overflow-hidden"
     >
+       <div
+        className={cn(
+          "absolute inset-0 z-0",
+          "bg-neutral-950 transition-bg",
+          "bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+        )}
+      />
       <div className="container relative z-20 mx-auto px-4 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl font-headline">
           PIXEL-PERFECT

@@ -49,7 +49,7 @@ export default function AboutSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {processSteps.map((step, index) => (
                 <ParallaxTilt key={index}>
-                  <Card className="p-4 bg-background/50 h-full">
+                  <Card className="p-4 bg-card/50 h-full">
                     <CardHeader>
                       <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit mb-4">
                         <step.icon className="h-6 w-6" />
