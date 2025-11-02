@@ -12,8 +12,13 @@ export default function HeroSection() {
        <div
         className={cn(
           "absolute inset-0 z-0",
-          "bg-neutral-950 transition-bg",
-          "bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+          "bg-neutral-50 transition-bg",
+          "[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary))_0%,hsl(var(--primary))_7%,transparent_10%,transparent_12%,hsl(var(--primary))_16%)]",
+          "[background-image:var(--aurora),var(--aurora)]",
+          "[background-position:50%_50%,50%_50%]",
+          "[background-size:300%,300%]",
+          "after:content-[''] after:absolute after:inset-0 after:bg-neutral-50/80 after:backdrop-blur-sm",
+          "animate-aurora"
         )}
       />
       <div className="container relative z-20 mx-auto px-4 text-center">
