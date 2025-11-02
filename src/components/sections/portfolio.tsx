@@ -10,41 +10,44 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { Button } from '../ui/button';
 
 const projects = [
   {
     id: 'nebula-ui',
-    title: 'Nebula - SaaS Platform',
+    title: 'Nebula - Next-Gen SaaS',
     description:
-      'A comprehensive brand identity and UI/UX design for a next-generation SaaS platform. We developed a scalable design system that enhances usability and strengthens brand recall.',
+      'We delivered a comprehensive brand identity and scalable design system for Nebula, a B2B SaaS platform. The new UX/UI led to a 40% increase in user engagement and a 25% faster task completion rate.',
     tags: ['Brand Identity', 'UI/UX Design', 'SaaS'],
+    href: "/#",
   },
   {
     id: 'ecliptica-brand',
-    title: 'Ecliptica - Luxury Fashion',
+    title: 'Ecliptica - Luxury Fashion E-commerce',
     description:
-      'Crafted a sophisticated brand identity and high-converting e-commerce website for a luxury fashion label, leading to a significant increase in market presence and sales.',
+      'Crafted a sophisticated brand and e-commerce website for Ecliptica, resulting in a 300% increase in online sales and significant media attention in major fashion publications.',
     tags: ['Branding', 'E-commerce', 'Web Design'],
+    href: "/#",
   },
   {
     id: 'flowspace-website',
-    title: 'FlowSpace - FinTech Innovator',
+    title: 'FlowSpace - FinTech Corporate Site',
     description:
-      'Designed and developed a corporate website focused on building trust and authority. The site features clear data visualizations and a secure, seamless user journey.',
-    tags: ['Web Development', 'FinTech', 'Brand Strategy'],
+      'Designed a corporate website focused on building trust and authority in the FinTech space. The site features clear data visualizations and a secure, seamless user journey, boosting investor confidence.',
+    tags: ['Web Development', 'FinTech', 'Data Visualization'],
+    href: "/#",
   },
 ];
 
 const ParallaxCard = ({ project }: { project: (typeof projects)[0] }) => {
   const placeholder = PlaceHolderImages.find((p) => p.id === project.id);
-  const ref = useRef<HTMLDivElement>(null);
   
   return (
     <Card
-      ref={ref}
       key={project.id}
-      className="overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 border-border hover:border-primary/50"
+      className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 border-border"
     >
       <CardHeader className="p-0">
         <div className="aspect-video overflow-hidden">
@@ -66,7 +69,7 @@ const ParallaxCard = ({ project }: { project: (typeof projects)[0] }) => {
           {project.description}
         </p>
       </CardContent>
-      <CardFooter className="p-6 pt-0">
+      <CardFooter className="p-6 pt-0 flex justify-between items-center">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <Badge key={tag} variant="secondary">
@@ -74,6 +77,11 @@ const ParallaxCard = ({ project }: { project: (typeof projects)[0] }) => {
             </Badge>
           ))}
         </div>
+         <Button variant="outline" size="sm" asChild>
+            <Link href={project.href} target="_blank">
+              View Project <ArrowUpRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
       </CardFooter>
     </Card>
   );
