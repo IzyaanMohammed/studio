@@ -2,25 +2,25 @@
   "placeholderImages": [
     {
       "id": "nebula-ui",
-      "description": "Abstract gradient design for Nebula UI project.",
-      "imageUrl": "https://images.unsplash.com/photo-1673526759317-be71a1243e3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdyYWRpZW50c3xlbnwwfHx8fDE3NjIwMDc4Nzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract gradients"
+      "description": "A cozy, modern local cafe interior.",
+      "imageUrl": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWZlJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzIyMjExODgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cafe interior"
     },
     {
       "id": "ecliptica-brand",
-      "description": "Brand identity showcase for Ecliptica.",
-      "imageUrl": "https://images.unsplash.com/photo-1633533452148-a9657d2c9a5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxicmFuZCUyMGlkZW50aXR5fGVufDB8fHx8fDE3NjE4OTM4Njh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "brand identity"
+      "description": "Showcase of handmade artisan products for an e-commerce store.",
+      "imageUrl": "https://images.unsplash.com/photo-1524672363094-d839358189c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhcnRpc2FuJTIwcHJvZHVjdHN8ZW58MHx8fHwxNzIyMjExOTUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artisan products"
     },
     {
       "id": "flowspace-website",
-      "description": "Website mockup for FlowSpace project.",
-      "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3ZWJzaXRlJTIwbW9ja3VwfGVufDB8fHx8MTc2MjAwNzg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "website mockup"
+      "description": "A clean and professional website design shown on a laptop.",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwbGF5b3V0fGVufDB8fHx8fDE3MjIyMTIwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "website layout"
     },
     {
       "id": "quantum-analytics",
-      "description": "AI analytics platform dashboard.",
+      "description": "Dashboard of a modern B2B analytics platform.",
       "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbmFseXRpY3MlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzYyMjE1OTMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "analytics dashboard"
     }
