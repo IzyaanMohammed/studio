@@ -6,12 +6,12 @@ import PortfolioSection from '@/components/sections/portfolio';
 import AboutSection from '@/components/sections/about';
 import TestimonialsSection from '@/components/sections/testimonials';
 import ContactSection from '@/components/sections/contact';
-import { PixelGridBackground } from '@/components/layout/pixel-grid-background';
+import { StarfieldBackground } from '@/components/layout/starfield-background';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <PixelGridBackground />
+      <StarfieldBackground />
       <Header />
       <main className="flex-grow">
         <HeroSection />
