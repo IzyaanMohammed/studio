@@ -39,7 +39,8 @@ export default function HeroSection() {
         className={cn(
           'absolute inset-0 z-0',
           'bg-neutral-50 transition-bg dark:bg-transparent',
-          '[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary))_0%,hsl(var(--primary))_7%,transparent_10%,transparent_12%,hsl(var(--primary))_16%)]',
+          '[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary)/0.1)_0%,hsl(var(--primary)/0.1)_7%,transparent_10%,transparent_12%,hsl(var(--primary)/0.1)_16%)]',
+          'dark:[--aurora:repeating-linear-gradient(100deg,hsl(var(--primary)/0.2)_0%,hsl(var(--primary)/0.2)_7%,transparent_10%,transparent_12%,hsl(var(--primary)/0.2)_16%)]',
           '[background-image:var(--aurora),var(--aurora)]',
           '[background-size:300%,300%]',
           "after:content-[''] after:absolute after:inset-0 after:bg-background/80 after:backdrop-blur-sm dark:after:bg-background/90",
@@ -74,4 +75,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
