@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { AppWindow, Github, Twitter, Linkedin, Phone, Mail } from 'lucide-react';
+import { Github, Twitter, Linkedin, Phone, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
 import { UseScrollObserver } from '@/hooks/use-scroll-observer';
+import { Logo } from '../logo';
 
 const socialLinks = [
   {
@@ -38,8 +39,7 @@ export default function Footer() {
           <div className="grid gap-8 md:grid-cols-12 fade-in-up">
               <div className='col-span-12 md:col-span-4 space-y-4'>
                    <Link href="/" className="flex items-center gap-2">
-                      <AppWindow className="h-6 w-6 text-primary" />
-                      <span className="text-xl font-bold text-foreground">Pixel8 Studios</span>
+                      <Logo className="h-12 w-auto" />
                   </Link>
                   <p className='text-muted-foreground text-sm'>
                       We craft digital excellence, building impactful web experiences for innovative brands globally.
