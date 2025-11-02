@@ -4,7 +4,6 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
-import { AuroraBackground } from '@/components/layout/aurora-background';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,9 +18,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'WebCraft | Future-Forward Branding & Web Design Agency',
+  title: 'Pixel8 Studios | Future-Forward Branding & Web Design Agency',
   description:
-    'WebCraft is a premier creative web design and branding agency, specializing in building futuristic, innovative, and high-performance websites and brand identities.',
+    'Pixel8 Studios is a premier creative web design and branding agency, specializing in building futuristic, innovative, and high-performance websites and brand identities.',
 };
 
 export default function RootLayout({
@@ -40,11 +39,10 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <AuroraBackground />
           {children}
           <Toaster />
         </ThemeProvider>

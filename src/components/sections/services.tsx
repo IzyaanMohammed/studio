@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Palette, Layers, MonitorSmartphone, ShoppingBag, TrendingUp, Gem } from 'lucide-react';
+import { Palette, Layers, MonitorSmartphone, ShoppingBag, TrendingUp, MousePointerClick } from 'lucide-react';
 import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 import { ParallaxTilt } from '../ui/parallax-tilt';
 
@@ -7,39 +7,39 @@ import { ParallaxTilt } from '../ui/parallax-tilt';
 const services = [
   {
     icon: Layers,
-    title: 'Brand Strategy',
-    description: 'We define your brand’s core message, target audience, and market position to create a foundation for success.'
-  },
-  {
-    icon: Palette,
-    title: 'Brand Identity & Logo',
-    description: 'From logos to color palettes, we design a stunning visual identity that tells your brand’s story and makes it unforgettable.'
+    title: 'Brand Strategy & Identity',
+    description: 'We define your brand’s core message and design a stunning visual identity that tells your story and makes it unforgettable.'
   },
   {
     icon: MonitorSmartphone,
-    title: 'Web & App Design',
-    description: 'We create intuitive, high-performance websites and applications that offer a seamless user experience and drive engagement.'
+    title: 'UI/UX Design',
+    description: 'We create intuitive, beautiful, and high-performance websites and applications that offer a seamless user experience.'
+  },
+  {
+    icon: MousePointerClick,
+    title: 'Interactive Experiences',
+    description: 'We build engaging interactive websites and applications that captivate users and bring your brand’s digital presence to life.'
   },
   {
     icon: ShoppingBag,
-    title: 'E-commerce Experiences',
+    title: 'E-commerce Platforms',
     description: 'We build high-converting e-commerce platforms that integrate your brand and drive sales through superior UX/UI.'
   },
   {
-      icon: Gem,
-      title: 'Packaging Design',
-      description: 'We craft beautiful, sustainable packaging that stands out on the shelf and enhances the unboxing experience.'
+      icon: Palette,
+      title: 'Design Systems',
+      description: 'We craft comprehensive design systems that ensure brand consistency, streamline development, and scale with your business.'
   },
   {
       icon: TrendingUp,
-      title: 'Social Media Strategy',
-      description: 'We develop a cohesive content strategy and visual language for your social channels to grow your audience.'
+      title: 'Growth & Marketing',
+      description: 'We develop a cohesive content and social media strategy to grow your audience and amplify your brand’s reach.'
   }
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-32 bg-background">
+    <section id="services" className="py-20 md:py-32 bg-background relative z-10">
       <div className="container mx-auto px-4 md:px-6">
         <UseScrollObserver>
           <div className="text-center mb-12 fade-in-up">

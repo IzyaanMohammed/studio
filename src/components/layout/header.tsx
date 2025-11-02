@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Sparkles } from "lucide-react";
+import { Menu, AppWindow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -42,8 +42,8 @@ export default function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <Sparkles className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold text-foreground">WebCraft</span>
+          <AppWindow className="h-6 w-6 text-primary" />
+          <span className="text-xl font-bold text-foreground">Pixel8 Studios</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -73,8 +73,8 @@ export default function Header() {
                 <div className="flex flex-col h-full">
                   <div className="flex items-center justify-between p-4 border-b">
                      <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick}>
-                      <Sparkles className="h-6 w-6 text-primary" />
-                      <span className="text-xl font-bold">WebCraft</span>
+                      <AppWindow className="h-6 w-6 text-primary" />
+                      <span className="text-xl font-bold">Pixel8 Studios</span>
                     </Link>
                   </div>
                   <nav className="flex flex-col gap-6 p-4 mt-6">

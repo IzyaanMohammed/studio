@@ -15,7 +15,7 @@ import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 const testimonials = [
   {
     quote:
-      'WebCraft is a powerhouse of creativity and technical skill. They took our vision and turned it into a digital reality that exceeded all our goals. The best branding agency in Dubai, hands down.',
+      'Pixel8 Studios is a powerhouse of creativity and technical skill. They took our vision and turned it into a digital reality that exceeded all our goals. The best branding agency in Dubai, hands down.',
     name: 'Fatima Al Marzooqi',
     company: 'CEO of Innovate UAE',
     avatar: 'FA',
@@ -23,7 +23,7 @@ const testimonials = [
   },
   {
     quote:
-      'The attention to detail and commitment to our vision was unparalleled. WebCraft is the Tesla of web design, without a doubt. Our user engagement has skyrocketed since the launch.',
+      'The attention to detail and commitment to our vision was unparalleled. Pixel8 is the Tesla of web design, without a doubt. Our user engagement has skyrocketed since the launch.',
     name: 'Yusuf Ahmed',
     company: 'Founder of Tech Forward',
     avatar: 'YA',
@@ -31,17 +31,25 @@ const testimonials = [
   },
   {
     quote:
-      'Working with WebCraft was a seamless experience. They delivered a high-performance, visually stunning website that perfectly captures our brand essence. Highly recommended!',
+      'Working with Pixel8 Studios was a seamless experience. They delivered a high-performance, visually stunning website that perfectly captures our brand essence. Highly recommended!',
     name: 'Layla Ibrahim',
     company: 'Marketing Director at Creative Minds',
     avatar: 'LI',
     image: 'https://picsum.photos/seed/avatar3/100/100'
   },
+   {
+    quote:
+      'The level of professionalism and the quality of the final product were simply outstanding. They are not just developers; they are true digital craftsmen. Our new site is a work of art.',
+    name: 'David Chen',
+    company: 'CTO of Quantum Analytics',
+    avatar: 'DC',
+    image: 'https://picsum.photos/seed/avatar4/100/100'
+  },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 md:py-32">
+    <section id="testimonials" className="py-20 md:py-32 relative z-10">
       <div className="container mx-auto px-4 md:px-6">
         <UseScrollObserver>
           <div className="text-center mb-12 fade-in-up">

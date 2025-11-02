@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { AnimatedGradient } from '../layout/animated-gradient';
 
 export default function HeroSection() {
   return (
@@ -9,11 +8,9 @@ export default function HeroSection() {
       id="home"
       className="relative flex items-center justify-center h-screen min-h-[700px] overflow-hidden"
     >
-      <AnimatedGradient />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background z-10" />
       <div className="container relative z-20 mx-auto px-4 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-          FUTURE-FORWARD
+          PIXEL-PERFECT
           <br />
           <span className="text-glow text-primary">BRANDING & WEB DESIGN</span>
           <br />

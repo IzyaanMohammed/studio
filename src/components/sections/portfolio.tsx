@@ -41,6 +41,14 @@ const projects = [
     tags: ['Web Development', 'FinTech', 'Data Visualization'],
     href: "/#",
   },
+  {
+    id: 'quantum-analytics',
+    title: 'Quantum - AI Analytics Platform',
+    description:
+      'Developed a cutting-edge web application for Quantum, an AI-powered analytics firm. The platform visualizes complex data streams in an intuitive dashboard, enabling users to derive insights 80% faster.',
+    tags: ['Web App', 'AI', 'Data Science'],
+    href: "/#",
+  }
 ];
 
 const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
@@ -95,7 +103,7 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
 
 export default function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-20 md:py-32">
+    <section id="portfolio" className="py-20 md:py-32 relative z-10">
       <div className="container mx-auto px-4 md:px-6">
         <UseScrollObserver>
         <div className="text-center mb-12 fade-in-up">
@@ -108,7 +116,7 @@ export default function PortfolioSection() {
           </p>
         </div>
         </UseScrollObserver>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {projects.map((project) => (
             <ProjectCard project={project} key={project.id} />
           ))}

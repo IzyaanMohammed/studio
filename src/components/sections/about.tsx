@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Gem, Target, Palette, Rocket } from 'lucide-react';
+import { Infinity, Target, SquareCode, Scaling } from 'lucide-react';
 import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 import { ParallaxTilt } from '../ui/parallax-tilt';
 
@@ -10,17 +10,17 @@ const processSteps = [
     description: 'We dive deep into your brand, audience, and goals to build a strategic foundation for undeniable success.'
   },
   {
-    icon: Palette,
-    title: '2. Visual Identity',
-    description: 'Our designers craft a stunning and memorable visual identity, from logos to color palettes that tell your unique story.'
+    icon: SquareCode,
+    title: '2. Design & Development',
+    description: 'Our designers and developers craft a stunning, memorable, and high-performance digital presence for your brand.'
   },
   {
-    icon: Gem,
-    title: '3. Web & App Craftsmanship',
-    description: 'We build beautiful, high-performance websites and apps focused on providing an exceptional user experience.'
+    icon: Infinity,
+    title: '3. Refinement & Iteration',
+    description: 'We believe in perfection. Through rigorous testing and feedback, we refine every pixel and interaction.'
   },
   {
-    icon: Rocket,
+    icon: Scaling,
     title: '4. Launch & Growth',
     description: 'We deploy your project and provide ongoing support, ensuring it evolves with your brand and continues to drive results.'
   }
@@ -28,7 +28,7 @@ const processSteps = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 md:py-32 bg-secondary/30">
+    <section id="about" className="py-20 md:py-32 bg-secondary/30 relative z-10">
       <div className="container mx-auto px-4 md:px-6">
         <UseScrollObserver>
           <div className="grid md:grid-cols-2 gap-12 items-center fade-in-up">
@@ -36,11 +36,11 @@ export default function AboutSection() {
               <div className="space-y-2">
                   <p className="text-primary font-semibold">WHO WE ARE</p>
                   <h2 className="text-3xl md:text-4xl font-bold font-headline">
-                  Architects of Digital Presence
+                  Architects of the Digital Frontier
                   </h2>
               </div>
               <p className="text-muted-foreground text-lg">
-                WebCraft is a nimble team of creators, strategists, and developers who are passionate about building brands that thrive in the digital age. We believe that exceptional design is a perfect marriage of art and science—beautiful, strategic, and engineered for performance.
+                Pixel8 Studios is a collective of visionary creators, strategists, and developers passionate about building brands that thrive in the digital age. We believe that exceptional design is a perfect marriage of art and science—beautiful, strategic, and engineered for performance.
               </p>
               <p className="text-muted-foreground">
                 Our mission is to empower businesses by crafting digital-first brands that not only captivate audiences but also deliver tangible, measurable growth. We are your dedicated partners in innovation.

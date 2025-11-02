@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Sparkles, Github, Twitter, Linkedin, Phone, Mail } from 'lucide-react';
+import { AppWindow, Github, Twitter, Linkedin, Phone, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
 import { UseScrollObserver } from '@/hooks/use-scroll-observer';
 
@@ -32,14 +32,14 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary/50 border-t border-border">
+    <footer className="bg-secondary/50 border-t border-border relative z-10">
       <div className="container mx-auto px-4 py-12 md:px-6">
         <UseScrollObserver>
           <div className="grid gap-8 md:grid-cols-12 fade-in-up">
               <div className='col-span-12 md:col-span-4 space-y-4'>
                    <Link href="/" className="flex items-center gap-2">
-                      <Sparkles className="h-6 w-6 text-primary" />
-                      <span className="text-xl font-bold text-foreground">WebCraft</span>
+                      <AppWindow className="h-6 w-6 text-primary" />
+                      <span className="text-xl font-bold text-foreground">Pixel8 Studios</span>
                   </Link>
                   <p className='text-muted-foreground text-sm'>
                       We craft digital excellence, building impactful web experiences for innovative brands globally.
@@ -95,7 +95,7 @@ export default function Footer() {
         </UseScrollObserver>
         <div className="mt-8 pt-8 border-t border-border text-center text-xs text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} WebCraft. All rights reserved.
+            &copy; {new Date().getFullYear()} Pixel8 Studios. All rights reserved.
           </p>
         </div>
       </div>
