@@ -21,9 +21,6 @@ export const metadata: Metadata = {
   title: 'Pixel8 Studios | Future-Forward Branding & Web Design Agency',
   description:
     'Pixel8 Studios is a premier creative web design and branding agency, specializing in building futuristic, innovative, and high-performance websites and brand identities.',
-  icons: {
-    icon: '/favicon.ico',
-  }
 };
 
 export default function RootLayout({
